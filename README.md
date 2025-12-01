@@ -46,7 +46,78 @@ The system uses only standard C libraries, making it suitable for embedded syste
 ✔ 7. Demonstration Driver Program
 
 Includes a sample main() function showing allocation of integers and strings using the custom allocator.
-
+🛠 Functional Requirements
+These describe the features and behaviors the system provides to the end user:
+- Add New Record
+- User can input item details: ID, name, value, and duty percent.
+- System calculates duty amount automatically using the formula:
+\mathrm{Duty\  Amount}=\frac{\mathrm{Item\  Value}\times \mathrm{Duty\  Percent}}{100}.
+- Record is stored persistently in a binary file (customs_records.dat).
+- View All Records
+- System retrieves all records from the file.
+- Displays each record with item ID, name, value, duty percent, and duty amount.
+- Search Record by Item ID
+- User enters an item ID.
+- System searches through stored records.
+- If found, displays the full record details.
+- If not found, informs the user.
+- Exit
+- User can terminate the program gracefully.
+- Error Handling
+- If the file cannot be opened, the system displays an error message.
+- If no records exist, the system informs the user.
+⚙️ Technical Requirements
+These describe the implementation details, constraints, and design choices:
+- Programming Language & Environment
+- Written in C using standard libraries (stdio.h, stdlib.h, string.h).
+- Console-based application.
+- Data Storage
+- Records are stored in a binary file (customs_records.dat).
+- File operations use fopen, fwrite, fread, and fclose.
+⚙️ Technical Requirements
+These describe the implementation details, constraints, and design choices:
+- Programming Language & Environment
+- Written in C using standard libraries (stdio.h, stdlib.h, string.h).
+- Console-based application.
+- Data Storage
+- Records are stored in a binary file (customs_records.dat).
+- File operations use fopen, fwrite, fread, and fclose.
+- Data Structure
+- Custom struct CustomsRecord with fields:
+- int itemID
+- char itemName[50]
+- float itemValue
+- float dutyPercent
+- float dutyAmount
+- Persistence
+- Records are appended ("ab") when added.
+- Records are read ("rb") when viewing or searching.
+- User Interface
+- Menu-driven system with options displayed in a loop.
+- Input handled via scanf.
+- Computation
+- Duty amount is calculated by a dedicated function calculateDuty() for modularity.
+- Control Flow
+- Infinite loop (while(1)) keeps the program running until user chooses Exit.
+- switch statement handles menu choices.
+- Constraints
+- Item name input limited to 49 characters (due to char itemName[50]).
+- No duplicate ID check (user must ensure uniqueness).
+- Basic error handling (file open failures, invalid menu choice).
+🖥️ Option 1: Run with GCC (MinGW) on Windows
+- Install GCC (MinGW):
+- Download MinGW or TDM-GCC.
+- Install it and make sure the bin folder (e.g., C:\MinGW\bin) is added to your system PATH.
+- Save your code:
+- Copy your code into a file named customs.c.
+- Open Command Prompt (CMD):
+- Press Win + R, type cmd, and hit Enter.
+- Navigate to your file location:
+cd path\to\your\file
+- Compile the code:
+gcc customs.c -o customs.exe
+- Run the program:
+customs.exe
 
 <img width="445" height="501" alt="Screenshot 2025-11-27 115459" src="https://github.com/user-attachments/assets/b07bdea7-2427-4eb7-93b3-d1f131bd54ee" />
 <img width="469" height="346" alt="Screenshot 2025-11-27 115513" src="https://github.com/user-attachments/assets/35609982-5707-4d0e-ab4e-c27cc3078567" />
@@ -54,3 +125,5 @@ Includes a sample main() function showing allocation of integers and strings usi
 ---
 
 If you want, I can also provide:<img width="504" height="472" alt="Screenshot 2025-11-19 222328" src="https://github.com/user-attachments/assets/b239d10b-c9bc-4d64-85b5-93d9f963b4e3" />
+
+
